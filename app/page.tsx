@@ -28,6 +28,7 @@ type Repos = {
 export default function Home() {
   const [searchedUser, setSearchedUser] = useState<User>(null);
   const [repos, setRepos] = useState<Repos[]>([]);
+  const [initialReposToShow, setInitialReposToShow] = useState<Repos[]>([]);
 
   const setUserDetails = (user: User) => {
     setSearchedUser(user);
@@ -35,7 +36,10 @@ export default function Home() {
 
   useEffect(() => {
     if (searchedUser) {
-      getRepos().then((res) => setRepos(res.data));
+      getRepos().then((res) => {
+        setRepos(res.data);
+        setInitialReposToShow(res.data.slice(0, 7));
+      });
     }
   }, [searchedUser]);
 
@@ -43,6 +47,10 @@ export default function Home() {
     const repos = await axios.get(`/api/repos/${searchedUser?.login}`);
     return repos;
   }
+
+  const viewAllRepositories = () => {
+    setInitialReposToShow(repos);
+  };
 
   return (
     <div className="h-full w-full">
@@ -82,7 +90,7 @@ export default function Home() {
           </p>
         </div>
         <div className="grid gap-4 grid-cols-1 md:grid-cols-2 ml-[10%] mt-6 w-[80%]">
-          {repos?.map((repo) => (
+          {initialReposToShow?.map((repo) => (
             <RepoCard
               name={repo.name}
               forks={repo.forks_count}
@@ -92,6 +100,18 @@ export default function Home() {
             />
           ))}
         </div>
+        {
+          <div className="p-10 flex justify-center items-center">
+            {initialReposToShow.length !== repos.length && (
+              <p
+                className="text-[#abb4c2] cursor-pointer"
+                onClick={viewAllRepositories}
+              >
+                View All Repositories
+              </p>
+            )}
+          </div>
+        }
       </div>
     </div>
   );

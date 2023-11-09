@@ -7,7 +7,7 @@ export async function GET(
   try {
     const { username } = params;
     const response = await fetch(
-      `https://api.github.com/users/${username}/repos?sort=created`
+      `https://api.github.com/users/${username}/repos?sort=updated`
     );
     const repos = await response.json();
 

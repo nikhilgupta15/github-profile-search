@@ -19,9 +19,9 @@ const RepoCard = ({
   description,
 }: RepoCardProps) => {
   return (
-    <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] rounded-lg p-4 max-w-full">
+    <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] rounded-lg p-4 max-w-full h-fit">
       <p className="text-white">{name}</p>
-      <p className="text-[#abb4c2] mt-2">{description}</p>
+      <p className="text-[#abb4c2] mt-2 text-sm">{description}</p>
       <div className="flex items-center gap-4 mt-2">
         <div className="flex gap-3">
           <div className="flex items-center gap-1">
