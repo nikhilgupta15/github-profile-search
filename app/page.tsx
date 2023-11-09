@@ -6,24 +6,7 @@ import RepoCard from "./_components/RepoCard";
 import Hero from "./_components/Hero";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-type User = {
-  name: string;
-  bio: string;
-  avatar_url: string;
-  followers: number;
-  following: number;
-  location: string;
-  login: string;
-} | null;
-
-type Repos = {
-  name: string;
-  forks_count: number;
-  stargazers_count: number;
-  updated_at: string;
-  description: string;
-};
+import { Repos, User } from "@/types";
 
 export default function Home() {
   const [searchedUser, setSearchedUser] = useState<User>(null);

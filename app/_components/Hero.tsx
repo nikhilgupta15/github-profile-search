@@ -6,16 +6,7 @@ import SearchCard from "./SearchCard";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
-
-type User = {
-  name: string;
-  bio: string;
-  avatar_url: string;
-  followers: number;
-  following: number;
-  location: string;
-  login: string;
-} | null;
+import { User } from "@/types";
 
 var timer: any;
 

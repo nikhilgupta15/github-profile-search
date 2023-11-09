@@ -1,11 +1,6 @@
 import React from "react";
 import Image from "next/image";
-
-interface SearchCardProps {
-  imgUrl: string;
-  name: string;
-  bio: string;
-}
+import { SearchCardProps } from "@/types";
 
 const SearchCard = ({ imgUrl, name, bio }: SearchCardProps) => {
   return (

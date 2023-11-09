@@ -1,9 +1,5 @@
+import { StatCardProps } from "@/types";
 import React from "react";
-
-interface StatCardProps {
-  type: string;
-  value: number | undefined | string;
-}
 
 const StatCard = ({ type, value }: StatCardProps) => {
   return (

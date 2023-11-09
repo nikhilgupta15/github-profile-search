@@ -1,0 +1,36 @@
+export type User = {
+  name: string;
+  bio: string;
+  avatar_url: string;
+  followers: number;
+  following: number;
+  location: string;
+  login: string;
+} | null;
+
+export type Repos = {
+  name: string;
+  forks_count: number;
+  stargazers_count: number;
+  updated_at: string;
+  description: string;
+};
+
+export interface RepoCardProps {
+  name: string;
+  forks: number;
+  stars: number;
+  updated_at: string;
+  description: string;
+}
+
+export interface SearchCardProps {
+  imgUrl: string;
+  name: string;
+  bio: string;
+}
+
+export interface StatCardProps {
+  type: string;
+  value: number | undefined | string;
+}

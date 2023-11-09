@@ -2,14 +2,7 @@ import React from "react";
 import Nesting from "../../public/Nesting.svg";
 import Star from "../../public/Star.svg";
 import Image from "next/image";
-
-interface RepoCardProps {
-  name: string;
-  forks: number;
-  stars: number;
-  updated_at: string;
-  description: string;
-}
+import { RepoCardProps } from "@/types";
 
 const RepoCard = ({
   name,
