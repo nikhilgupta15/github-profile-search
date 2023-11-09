@@ -3,6 +3,7 @@ import Nesting from "../../public/Nesting.svg";
 import Star from "../../public/Star.svg";
 import Image from "next/image";
 import { RepoCardProps } from "@/types";
+import { formatUpdatedAt } from "@/utils/format";
 
 const RepoCard = ({
   name,
@@ -28,7 +29,7 @@ const RepoCard = ({
         </div>
         <div>
           <p className="text-[#dce8f96e] font-light text-[10px]">
-            updated {new Date(updated_at).toISOString()}
+            updated {formatUpdatedAt(updated_at)}
           </p>
         </div>
       </div>
