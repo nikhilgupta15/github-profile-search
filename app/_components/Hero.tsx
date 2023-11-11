@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { User } from "@/types";
+import NoUserFound from "./NoUserFound";
 
 var timer: any;
 
@@ -21,14 +22,18 @@ const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
       }
 
       timer = setTimeout(async () => {
-        const user = await axios.get("/api/search", {
-          params: {
-            query: searchValue,
-          },
-        });
-        console.log(user);
-        setUser(user.data);
-      }, 300);
+        try {
+          const user = await axios.get("/api/search", {
+            params: {
+              query: searchValue,
+            },
+          });
+          console.log(user);
+          setUser(user.data);
+        } catch (error) {
+          setUser(null);
+        }
+      }, 600);
     }
   }, [searchValue]);
 
@@ -67,6 +72,11 @@ const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
               name={user.name}
               bio={user.bio}
             />
+          </div>
+        )}
+        {!user && searchValue !== "" && (
+          <div className="mt-2">
+            <NoUserFound />
           </div>
         )}
       </div>

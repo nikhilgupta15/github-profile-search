@@ -34,3 +34,10 @@ export interface StatCardProps {
   type: string;
   value: number | undefined | string;
 }
+
+export interface UserDetailsProps {
+  searchedUser: User;
+  initialReposToShow: Repos[];
+  repos: Repos[];
+  viewAllRepositories: () => void;
+}
