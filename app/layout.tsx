@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Be_Vietnam_Pro } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={be_vietnam_pro.className}>{children}</body>
+      <body className={be_vietnam_pro.className}>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
