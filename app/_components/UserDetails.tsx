@@ -14,7 +14,7 @@ const UserDetails = ({
   return (
     <div>
       <div className="flex flex-row items-center relative ml-[10%]">
-        <div className="absolute bg-[#20293A] w-[120px] h-[120px] top-[-50px] rounded-lg flex justify-center items-center">
+        <div className="absolute bg-[#20293A] w-[120px] h-[120px] top-[-30px] rounded-lg flex justify-center items-center">
           <Image
             src={searchedUser ? searchedUser.avatar_url : NoImage}
             className="object-contain rounded-lg"
