@@ -4,31 +4,30 @@ import backgroundImage from "../../public/background-image.png";
 import Search from "../../public/Search.svg";
 import SearchCard from "./SearchCard";
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { User } from "@/types";
 import NoUserFound from "./NoUserFound";
 
-var timer: any;
-
 const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
   const [searchValue, setSearchValue] = useState("");
-  const [user, setUser] = useState<User>(null);
+  const [user, setUser] = useState<User>();
+  let timer = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     if (searchValue !== "") {
       if (timer) {
-        clearTimeout(timer);
+        clearTimeout(timer.current);
       }
 
-      timer = setTimeout(async () => {
+      timer.current = setTimeout(async () => {
         try {
           const user = await axios.get("/api/search", {
             params: {
               query: searchValue,
             },
           });
-          console.log(user);
+          //console.log(user);
           setUser(user.data);
         } catch (error) {
           setUser(null);
@@ -45,7 +44,7 @@ const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
     <div className="relative">
       <Image
         src={backgroundImage}
-        className="object-fill h-[300px] md:h-auto"
+        className="object-fill h-[300px] md:h-auto w-full"
         alt="cover"
       />
       <div className="absolute top-[20%] left-[20%] md:left-[35%] right-[5%]">
@@ -58,7 +57,7 @@ const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
             </div>
             <input
               type="text"
-              className="block rounded-md border-0 bg-[#20293A] py-1.5 pl-7 pr-20 text-gray-400  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
+              className="block w-[250px] rounded-md border-0 bg-[#20293A] py-1.5 pl-7 pr-20 text-gray-400  placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-500 sm:text-sm sm:leading-6"
               placeholder="username"
               onChange={(e) => setSearchValue(e.target.value)}
               value={searchValue}
@@ -74,7 +73,7 @@ const Hero = ({ setUserDetails }: { setUserDetails: (user: User) => void }) => {
             />
           </div>
         )}
-        {!user && searchValue !== "" && (
+        {user === null && searchValue !== "" && (
           <div className="mt-2">
             <NoUserFound />
           </div>

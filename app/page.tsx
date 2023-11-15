@@ -18,6 +18,7 @@ export default function Home() {
   useEffect(() => {
     if (searchedUser) {
       getRepos().then((res) => {
+        //console.log(res.data);
         setRepos(res.data);
         setInitialReposToShow(res.data.slice(0, 7));
       });
@@ -48,7 +49,7 @@ export default function Home() {
         {!searchedUser && (
           <div className="flex justify-center items-center h-[200px]">
             <p className="text-[#abb4c2] text-4xl text-center">
-              Search User to view the details
+              Search for users to view their details!!
             </p>
           </div>
         )}

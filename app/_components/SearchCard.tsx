@@ -4,7 +4,7 @@ import { SearchCardProps } from "@/types";
 
 const SearchCard = ({ imgUrl, name, bio }: SearchCardProps) => {
   return (
-    <div className="bg-[#111729] rounded-lg p-2 flex gap-3 items-center">
+    <div className="bg-[#111729] rounded-lg p-2 flex gap-3 items-center w-fit min-w-[250px]">
       <Image
         src={imgUrl}
         className="object-contain rounded-lg"

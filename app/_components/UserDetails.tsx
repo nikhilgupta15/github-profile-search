@@ -23,7 +23,7 @@ const UserDetails = ({
             width={100}
           />
         </div>
-        <div className="flex md:flex-row flex-col md items-center justify-around ml-[150px] gap-4 mt-4">
+        <div className="flex md:flex-row flex-col md:items-center justify-around ml-[150px] gap-4 mt-4">
           <StatCard
             type="Followers"
             value={searchedUser ? searchedUser.followers : "Not Available"}
@@ -34,13 +34,17 @@ const UserDetails = ({
           />
           <StatCard
             type="Location"
-            value={searchedUser ? searchedUser.location : "Not Available"}
+            value={
+              searchedUser?.location ? searchedUser.location : "Not Available"
+            }
           />
         </div>
       </div>
       <div className="flex flex-col ml-[10%] mt-6">
         <p className="text-white text-4xl">
-          {searchedUser ? searchedUser.name : "No Name Available"}
+          <a href={searchedUser?.html_url} target="_blank">
+            {searchedUser ? searchedUser.name : "No Name Available"}
+          </a>
         </p>
         <p className="text-[#abb4c2]  mt-2">
           {searchedUser ? searchedUser.bio : "No Bio Available"}
@@ -54,6 +58,7 @@ const UserDetails = ({
             stars={repo.stargazers_count}
             updated_at={repo.updated_at}
             description={repo.description}
+            url={repo.html_url}
           />
         ))}
       </div>

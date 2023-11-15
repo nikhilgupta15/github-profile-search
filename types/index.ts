@@ -1,12 +1,16 @@
-export type User = {
-  name: string;
-  bio: string;
-  avatar_url: string;
-  followers: number;
-  following: number;
-  location: string;
-  login: string;
-} | null;
+export type User =
+  | {
+      name: string;
+      bio: string;
+      avatar_url: string;
+      followers: number;
+      following: number;
+      location: string;
+      login: string;
+      html_url: string;
+    }
+  | null
+  | undefined;
 
 export type Repos = {
   name: string;
@@ -14,6 +18,7 @@ export type Repos = {
   stargazers_count: number;
   updated_at: string;
   description: string;
+  html_url: string;
 };
 
 export interface RepoCardProps {
@@ -22,6 +27,7 @@ export interface RepoCardProps {
   stars: number;
   updated_at: string;
   description: string;
+  url: string;
 }
 
 export interface SearchCardProps {

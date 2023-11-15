@@ -11,28 +11,31 @@ const RepoCard = ({
   stars,
   updated_at,
   description,
+  url,
 }: RepoCardProps) => {
   return (
     <div className="bg-gradient-to-r from-[#111729] to-[#1D1B48] rounded-lg p-4 max-w-full h-fit">
-      <p className="text-white">{name}</p>
-      <p className="text-[#abb4c2] mt-2 text-sm">{description}</p>
-      <div className="flex items-center gap-4 mt-2">
-        <div className="flex gap-3">
-          <div className="flex items-center gap-1">
-            <Image src={Nesting} alt="nesting-icon" height={15} />
-            <p className="text-[#dce8f96e] font-light text-sm">{forks}</p>
+      <a href={url} target="_blank">
+        <p className="text-white">{name}</p>
+        <p className="text-[#abb4c2] mt-2 text-sm">{description}</p>
+        <div className="flex items-center gap-4 mt-2">
+          <div className="flex gap-3">
+            <div className="flex items-center gap-1">
+              <Image src={Nesting} alt="nesting-icon" height={15} />
+              <p className="text-[#dce8f96e] font-light text-sm">{forks}</p>
+            </div>
+            <div className="flex items-center gap-1">
+              <Image src={Star} alt="nesting-icon" height={15} />
+              <p className="text-[#dce8f96e] font-light text-sm">{stars}</p>
+            </div>
           </div>
-          <div className="flex items-center gap-1">
-            <Image src={Star} alt="nesting-icon" height={15} />
-            <p className="text-[#dce8f96e] font-light text-sm">{stars}</p>
+          <div>
+            <p className="text-[#dce8f96e] font-light text-[10px]">
+              updated {formatUpdatedAt(updated_at)}
+            </p>
           </div>
         </div>
-        <div>
-          <p className="text-[#dce8f96e] font-light text-[10px]">
-            updated {formatUpdatedAt(updated_at)}
-          </p>
-        </div>
-      </div>
+      </a>
     </div>
   );
 };
