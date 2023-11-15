@@ -13,7 +13,7 @@ const UserDetails = ({
 }: UserDetailsProps) => {
   return (
     <div>
-      <div className="flex flex-row items-center relative ml-[10%]">
+      <div className="flex sm:flex-row flex-col items-center relative ml-[10%]">
         <div className="absolute bg-[#20293A] w-[120px] h-[120px] top-[-30px] rounded-lg flex justify-center items-center">
           <Image
             src={searchedUser ? searchedUser.avatar_url : NoImage}
@@ -23,7 +23,7 @@ const UserDetails = ({
             width={100}
           />
         </div>
-        <div className="flex md:flex-row flex-col md:items-center justify-around ml-[150px] gap-4 mt-4">
+        <div className="flex sm:flex-row flex-col sm:items-center justify-around sm:ml-[150px] gap-4 sm:mt-4 mt-[100px]">
           <StatCard
             type="Followers"
             value={searchedUser ? searchedUser.followers : "Not Available"}
@@ -59,6 +59,7 @@ const UserDetails = ({
             updated_at={repo.updated_at}
             description={repo.description}
             url={repo.html_url}
+            key={repo.id}
           />
         ))}
       </div>

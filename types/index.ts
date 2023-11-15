@@ -13,6 +13,7 @@ export type User =
   | undefined;
 
 export type Repos = {
+  id: number;
   name: string;
   forks_count: number;
   stargazers_count: number;
